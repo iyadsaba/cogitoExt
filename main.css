@@ -6,3 +6,19 @@
    text-align:center;
    line-height:200px;
  }
+ select { 
+   display: inline !important;
+ }
+ .form-row {
+  height: 120px !important;
+ }
+  .form-group {
+  height: 50px !important;
+ }
+
+ form { 
+   
+  width: 300px !important;
+  height: 200px !important;
+
+ }
