@@ -1,4 +1,11 @@
+function showAllLeauges(){
+    console.log("%c showAllLeauges invoked ","font-size:20px;")
 
+    let leagues  = [...document.querySelectorAll("li.slide")];
+    leagues.forEach(function(el){
+            el.setAttribute("style","display:block;");
+    })
+ }
  function showTradedLeauges(){
     console.log("%c showTradedLeauges invoked ","font-size:20px;")
 
@@ -10,11 +17,8 @@
         }
     });
  }
-
  function countMatches(hour,min){
     let matches = [...document.querySelectorAll("li.slide")];
-    // let hour = prompt("hour UTC ?");
-    // let min = prompt("minuets");
     let total = 0;
     matches.forEach(function(match){
         if(isVisible(match)){
@@ -26,7 +30,8 @@
             } 
         }
     });
-    alert(`total :${total}`);
+    console.log(`%c total :${total}`, "font-size:20px;color:yellow");
+
 
     function isVisible (ele) {
         var style = window.getComputedStyle(ele);
@@ -39,33 +44,18 @@
     
  }
 
- console.log("%c app files called 22222222222222", "font-size:20px;")
+ console.log("%c content script file loaded", "font-size:30px;color:green;")
 
- function showAllLeauges(){
-    console.log("%c showAllLeauges invoked ","font-size:20px;")
+chrome.runtime.sendMessage({todo: "showPageAction"});
 
-    let leagues  = [...document.querySelectorAll("li.slide")];
-    leagues.forEach(function(el){
-            el.setAttribute("style","display:block;");
-    })
- }
 
- 
-//  document.getElementById("show").addEventListener('click', function(){
-//      console.log("%c app files called", "font-size:20px;")
-//  });
-
-let showBtn = document.getElementById("show");
-let hideBtn = document.getElementById("hide");
-showBtn.addEventListener('click',showAllLeauges)
-hideBtn.addEventListener('click',showTradedLeauges)
-
-// chrome.tabs.sendMessage(activeTabs[0].id, { action: 'executeCode' });
-
-// hideBtn.addEventListener('click', function() {
-//     chrome.tabs.query({ active: true, currentWindow: true}, function(activeTabs) {
-//         // WAY 1
-//         chrome.tabs.executeScript(activeTabs[0].id, { code: showTradedLeauges()});
-//     });
-// });
-
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+    if (request.todo == "hide"){
+        console.log("%c hide action should trigger", "font-size:30px;color:green;")
+       showTradedLeauges();
+    }
+    else if(request.todo == "show"){
+        console.log("%c show action should trigger", "font-size:30px;color:green;")
+        showAllLeauges();
+    }
+});

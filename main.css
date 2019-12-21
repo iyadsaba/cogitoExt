@@ -1,24 +1,38 @@
-
-
- .main {
+.main {
    width: 400px !important;
-   height:200px !important;
-   text-align:center;
-   line-height:200px;
+   margin: 20px;
  }
+label { 
+  font-weight: 700;
+  color: white;
+}
+ .bottom {
+   margin-top: 20px;
+ }
+
  select { 
    display: inline !important;
  }
- .form-row {
-  height: 120px !important;
- }
-  .form-group {
-  height: 50px !important;
- }
 
- form { 
-   
-  width: 300px !important;
-  height: 200px !important;
-
+ .middle {
+   width: 35px;
  }
+ 
+.btn {
+  border-radius: 40px;
+}
+
+.btn-success:hover {
+color : black;
+}
+
+.btn-warning {
+  color : #fff;
+}
+
+.form-group  {
+  margin:  0px 5px;
+}
+body { 
+  background-color: #45A29C;
+}

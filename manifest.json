@@ -3,34 +3,26 @@
     "version": "1.0",
     "description": "TSO Helper Extension!",
     "manifest_version": 2,
-    "incognito": "split",
     "content_scripts": [
         {
-            "matches": [
-                "http://*/*",
-                "https://*/*"
-            ],
-            "js": [
-                "app.js"
-            ]
+            "matches": ["https://*.cogitosys.com:8888/*"],
+            "js": ["scripts/content.js" ]
         }
     ],
     "permissions": [
-        "activeTab",
-        "declarativeContent",
-        "storage",
-        "context_Menus","tabs"],
-        
+        "tabs",
+        "https://*.cogitosys.com:8888/*"
+    ],
     "icons": {
         "128": "icon.png"
     },
     "background": {
         "scripts": [
-            "background.js"
+            "scripts/background.js"
         ],
         "persistent": false
     },
-    "browser_action": {
+    "page_action": {
         "default_popup": "index.html",
         "default_icon": {
             "128": "icon.png"
